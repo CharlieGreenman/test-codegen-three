@@ -1,0 +1,95 @@
+{
+  "name": "test-codegen-three",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/test-codegen-three/src",
+  "prefix": "test-codegen-three",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/test-codegen-three",
+        "index": "apps/test-codegen-three/src/index.html",
+        "main": "apps/test-codegen-three/src/main.ts",
+        "polyfills": "apps/test-codegen-three/src/polyfills.ts",
+        "tsConfig": "apps/test-codegen-three/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/test-codegen-three/src/favicon.ico",
+          "apps/test-codegen-three/src/assets"
+        ],
+        "styles": ["apps/test-codegen-three/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/test-codegen-three/src/environments/environment.ts",
+              "with": "apps/test-codegen-three/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "test-codegen-three:build:production"
+        },
+        "development": {
+          "browserTarget": "test-codegen-three:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "razroo-angular-starter:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/razroo-angular-starter/src/**/*.ts",
+          "apps/razroo-angular-starter/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/razroo-angular-starter"],
+      "options": {
+        "jestConfig": "apps/razroo-angular-starter/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
