@@ -1,8 +1,7 @@
 {
-  "name": "test-codegen-three",
+  "name": "razroo-angular-starter",
   "version": "0.0.0",
   "license": "MIT",
-  
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
@@ -10,7 +9,7 @@
     "build": "nx build",
     "test": "node 'node_modules/.bin/jest'",
     "jest": "npm run jest",
-    "e2e": "nx e2e test-codegen-three-e2e"
+    "e2e": "nx e2e razroo-angular-starter-e2e"
   },
   "private": true,
   "dependencies": {
